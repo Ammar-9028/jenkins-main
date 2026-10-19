@@ -1,33 +1,33 @@
 # Jenkins CI/CD Pipeline with GitHub Webhook
 
 ## Project Overview
-Automated the build and deployment of the Spring PetClinic application using Jenkins and GitHub Webhooks.
+Built a CI/CD pipeline to automate the build, testing, and deployment of the Spring PetClinic application using Jenkins and GitHub Webhooks.
 
-## Tools Used
+## Technologies Used
 - AWS EC2
 - Ubuntu Linux
 - Jenkins
 - Git and GitHub
+- GitHub Webhooks
 - Maven
 - Java
 - Jetty
 - systemd
 
-## Project Workflow
+## CI/CD Workflow
 1. Push code to GitHub.
-2. GitHub Webhook triggers Jenkins automatically.
-3. Jenkins checks out the code.
-4. Maven builds the application and generates a WAR file.
-5. The WAR file is deployed on the EC2 server.
-6. Jenkins restarts the application service and checks its HTTP response.
+2. GitHub Webhook automatically triggers Jenkins.
+3. Jenkins checks out the source code.
+4. Maven builds the application and runs automated tests.
+5. The generated WAR file is deployed on the EC2 instance.
+6. systemd restarts the application service.
+7. Jenkins checks the application HTTP response.
 
-## Key Learning
-- Jenkins pipeline configuration
-- GitHub Webhook integration
-- Maven build automation
-- WAR deployment on Linux
-- Linux systemd service management
-- Application health checks
+## Results
+- Automated build and deployment.
+- All 75 tests passed in the reported build.
+- Application health check completed successfully.
+- Successful deployment verified on AWS EC2.
 
 ## Author
 Mohammed Ammar
