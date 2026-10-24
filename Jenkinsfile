@@ -8,7 +8,7 @@ pipeline {
     }
 
     stages {
-        stage('checkout') {
+        stage('Checkout') {
             steps {
                 checkout scm
             }
@@ -16,20 +16,22 @@ pipeline {
 
         stage('Verify Tools') {
             steps {
-                sh 'javac -version'
+                sh 'java -version'
+                sh 'mvn -version'
             }
         }
 
-        stage('maven build and deploy') {
+        stage('Build and Deploy') {
             steps {
                 sshagent(credentials: ['server-ssh-p']) {
                     sh '''
-                        ssh -o StrictHostKeyChecking=accpet-new ubuntu@${SERVER_IP} "
+                        ssh -o StrictHostKeyChecking=accept-new ubuntu@${SERVER_IP} "
+                            set -e
                             rm -rf ${APP_NAME}
-                            git clone https://github.com/Sivachaithanya-Organisation/.git
+                            git clone https://github.com/Ammar-9028/jenkins-main.git ${APP_NAME}
                             cd ${APP_NAME}
                             mvn clean package
-                            sudo cp target/petclinic.war /opt/tomcat/webapps/
+                            sudo cp target/petclinic.war /opt/tomcat10/webapps/
                         "
                     '''
                 }
